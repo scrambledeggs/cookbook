@@ -5,11 +5,32 @@ This document is a handbook of developer guidelines, tips and best practices at 
 
 The main intentions of this are the following:
 - To help the company's developers work better together
-- To help onboard new hires quickly
+- To help onboard new hires
 - To help other companies gain an insight on how work is done at Scrambled Eggs
 
+## General
+- The Dev Role and Responsibilities
+- [Source code conventions (general)](general/source-code-conventions.md)
+- Git workflow
+- Issues
+
+## Tech Specific
+- [Ruby](tech/ruby.md)
+- Rails
+- Javascript
+- React & React Native
+- iOS
+- Android
+- AWS
+
+## Tools
+- [List of recommended tools](tools/recommended-list.md)
+
+## Resources
+- [Recommended reading](resources/recommended-reading.md)
+
 ### Adding to the Cookbook
-Create a topic branch for the proposed addition/change and create a pull-request for it
+See [guidelines](guideline-guidelines.md)
 
 ### Credits
 Inspired by:
