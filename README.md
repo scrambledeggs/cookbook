@@ -29,8 +29,12 @@ The main intentions of this are the following:
 ## Resources
 - [Recommended reading](resources/recommended-reading.md)
 
+---
 ### Adding to the Cookbook
 See [guidelines](guideline-guidelines.md)
+
+### Join us
+Interested in working with us? Send an email to [andrei@phonebooky.com](mailto:andrei@phonebooky.com)
 
 ### Credits
 Inspired by:
