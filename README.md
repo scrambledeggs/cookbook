@@ -8,6 +8,9 @@ The main intentions of this are the following:
 - To help onboard new hires quickly
 - To help other companies gain an insight on how work is done at Scrambled Eggs
 
+### Adding to the Cookbook
+Create a topic branch for the proposed addition/change and create a pull-request for it
+
 ### Credits
 Inspired by:
 - [proudcloud/awesome](https://github.com/proudcloud/awesome)
