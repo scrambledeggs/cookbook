@@ -10,4 +10,4 @@ Adhere to these general source code conventions unless otherwise specified in la
 [//comment]: <> (list down specific languages under number 1 and a link to it's style guide under `tech`)
 
 ---
-[wtfpm]: (assets/wtfm.jpg)
+![wtfpm](../assets/wtfm.jpg)
