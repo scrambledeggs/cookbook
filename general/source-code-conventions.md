@@ -73,7 +73,7 @@ func main() {
 >"Every piece of knowledge must have a single, unambiguous, authoritative representation within a system."
 
 ---
-### Other considerations
+### Recommended reading
 See [Code Smells](https://blog.codinghorror.com/code-smells/)
 
 ---
