@@ -9,12 +9,8 @@ For source control we use GitHub. All projects are repositories under [scrambled
 - For fixes, treat the same as features but add `fix/` to branch name i.e `fix/your-face`
 - `master` will be write protected and merging to `master` will require a [pull request](https://help.github.com/articles/about-pull-requests/).
   ### Deployments and Releases
-  - For software that is submitted for release such as mobile apps
-    - Create a new branch from master called tagged with the version i.e. `1.0-stable`. The build submitted/released will come from this branch and will be tagged with the version number i.e. `1.0.0`. See [versioning](#versioning)
-  - For software that is deployed to a staging, pre-production and production
-    - staging server will always contain `master`
-    - once feature/fix is accepted on staging create a branch
-  - For both cases, prefer to create the release branches as late as possible.
+  - For app submissions, squash commit to `release` branch and tag it with the version number
+  - For deployed apps, squash commit to `production` branch and tag it with version number when applicable
 
 ## Versioning
 - Prefer to use [semantic versioning](http://semver.org/) where applicable.
