@@ -6,7 +6,7 @@ For source control we use GitHub. All projects are repositories under [scrambled
 - The canonical version of the code for active development lives in `master`
 - When a new feature is worked on, a branch will be created from `master`
 - Use descriptive feature branch names and name them using [`kebab-case`](https://en.wikipedia.org/wiki/Letter_case#Special_case_styles)
-- For fixes, treat the same as features but add `fix/` to branch name i.e `fix/your-face`
+- For fixes, treat the same as features but add `fix` to branch name i.e `fix-your-face`
 - `master` will be write protected and merging to `master` will require a [pull request](https://help.github.com/articles/about-pull-requests/).
   ### Deployments and Releases
   - For app submissions, squash commit to `release` branch and tag it with the version number
