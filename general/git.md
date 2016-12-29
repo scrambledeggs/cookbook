@@ -11,6 +11,8 @@ For source control we use GitHub. All projects are repositories under [scrambled
   ### Deployments and Releases
   - For app submissions, squash commit to `release` branch and tag it with the version number
   - For deployed apps, squash commit to `production` branch and tag it with version number when applicable
+  ### Copy changes
+  - This happens often enough that we should mark all copy changes with a branch name `copy-change`. This usually happens before deployment/release.
 
 ## Versioning
 - Prefer to use [semantic versioning](http://semver.org/) where applicable.
@@ -30,6 +32,6 @@ For source control we use GitHub. All projects are repositories under [scrambled
   > 2. Added CSS for Home Screen
   > 3. Fixes input validation bug for user#save
   > 4. Added version update checker feature
-  
+
 - If your commit references a Github Issue, make sure to mention it in your PR's description using [this format](https://help.github.com/articles/closing-issues-via-commit-messages/)
 - Rebase on top of the latest `master` before merging.
