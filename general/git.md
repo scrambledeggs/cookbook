@@ -30,5 +30,6 @@ For source control we use GitHub. All projects are repositories under [scrambled
   > 2. Added CSS for Home Screen
   > 3. Fixes input validation bug for user#save
   > 4. Added version update checker feature
-- If your PR references a Github Issue, make sure to mention it in your PR's description using [this format](https://help.github.com/articles/closing-issues-via-commit-messages/)
+  
+- If your commit references a Github Issue, make sure to mention it in your PR's description using [this format](https://help.github.com/articles/closing-issues-via-commit-messages/)
 - Rebase on top of the latest `master` before merging.
