@@ -10,7 +10,7 @@ The main intentions of this are the following:
 
 ## General
 - The Dev Role and Responsibilities
-- [Source code conventions (general)](general/source-code-conventions.md)
+- [Source code](general/source-code-conventions.md)
 - Git workflow
 - Issues
 
