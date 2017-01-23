@@ -35,3 +35,7 @@ For source control we use GitHub. All projects are repositories under [scrambled
 
 - If your commit references a Github Issue, make sure to mention it in your PR's description using [this format](https://help.github.com/articles/closing-issues-via-commit-messages/)
 - Rebase on top of the latest `master` before merging.
+  - If your branch is not synced/has conflicts with `master` (For example when a PR gets merged while you have a pending PR)
+    1. On your local copy `git pull origin master`
+    2. Fix conflicts
+      - On things like `db/schema.rb` it's better to regenerate schema i.e. `bundle exec rails db:schema:dump`
