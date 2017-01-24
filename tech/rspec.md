@@ -13,7 +13,7 @@
 
 # RSpec
 
--  The `should` syntax is [dead](https://github.com/rspec/rspec-expectations/blob/master/Should.md#why-switch-over-from-should-to-expect). Use the `expect` syntax. This also means no `shoulda`.
+-  The `should` syntax is [dead](https://github.com/rspec/rspec-expectations/blob/master/Should.md#why-switch-over-from-should-to-expect). Use the `expect` syntax. Minimize the use of `shoulda_matchers` gem to basic validations.
 
   ```ruby
   # ✗ Avoid
@@ -21,6 +21,9 @@
 
   # ✓ OK
   expect(user.name).to eq "Davy Jones"
+  
+  # ✓ OK
+  it { should validate_presence_of(:name) }
   ```
 
 - You can run specific examples by providing their line number when you run your tests.
@@ -130,7 +133,7 @@
 
 - Prefer multiline blocks over one liners.
 
-- If you must use one liners, use `is_expected`. Again, no `shoulda`.
+- If you must use one liners, use `is_expected`.
 
 
 ## `pending`
