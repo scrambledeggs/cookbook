@@ -54,6 +54,12 @@ end
       - Prefer to use [immutable-struct](https://github.com/stitchfix/immutable-struct) for this.
   - Keep in `app/services` folder (see _custom code_ above)
 
+## Other POROs
+- Put code into logical containers. Don't be afraid to add folders to your `app/` folder as this is autoloaded by default.
+  - `app/decorators`
+  - `app/utilities`
+  - `app/composers`
+- Check out [Design Patterns in Ruby](https://github.com/nslocum/design-patterns-in-ruby)
 ---
 <sup>1</sup> PORO = **P**lain **O**ld **R**uby **O**bject.
   > The distinction between a PORO (which stands for Plain Old Ruby Object) and a not-PORO is not a technical one. All objects are technically Ruby object. Instead, the term PORO is sometimes used when talking about large frameworks like Rails which tend to use "big", "complex" objects like ActiveRecord models for much of its logic. These large objects tend to contain a large amount of logic and defined behavior.
