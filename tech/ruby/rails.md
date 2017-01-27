@@ -6,6 +6,9 @@ class ModelName < ApplicationRecord
   # includes
   include ModuleName
 
+  # enums
+  enum type: [:a, :b, :c, :d]
+
   # relationships
   belongs_to :parent
   has_many :children
@@ -16,11 +19,11 @@ class ModelName < ApplicationRecord
   # validations
   validates :name, presence: true
 
-  # enums
-  enum type: [:a, :b, :c, :d]
-
   # scopes
   scope :deleted, -> { where(deleted: true) }
+
+  # callbacks
+  before_save :do_something
 end
 ```
 - Custom code or PORO<sup>1</sup> (validators, services, etc):
