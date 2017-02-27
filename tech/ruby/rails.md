@@ -56,6 +56,11 @@ end
     ```
       - Prefer to use [immutable-struct](https://github.com/stitchfix/immutable-struct) for this.
   - Keep in `app/services` folder (see _custom code_ above)
+  - When initializing services, pass in instances
+
+## ActiveJob
+  - Keep jobs in `app/jobs`
+  - Keep job `perform` parameters to a minimum. Ideally, pass in `[model].id` as parameter and query within the job. (This also allows the job to fail if record is not found)
 
 ## Other POROs
 - Put code into logical containers. Don't be afraid to add folders to your `app/` folder as this is autoloaded by default.
