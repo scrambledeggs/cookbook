@@ -48,4 +48,4 @@ Inspired by:
 Released under MIT License. Feel free to reuse/modify this list for your own team.
 
 ---
-:copyright: 2016, Scrambled Eggs Pte Ltd.
+:copyright: 2017, Scrambled Eggs Pte Ltd.
