@@ -28,6 +28,7 @@ The main intentions of this are the following:
 - [List of recommended tools](tools/recommended-list.md)
 
 ## Resources
+- Company has a shared udemy account under @dreinavarro. Please PM him for details
 - [Recommended reading](resources/recommended-reading.md)
 
 ---
@@ -48,4 +49,4 @@ Inspired by:
 Released under MIT License. Feel free to reuse/modify this list for your own team.
 
 ---
-:copyright: 2016, Scrambled Eggs Pte Ltd.
+:copyright: 2017, Scrambled Eggs Pte Ltd.
