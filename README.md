@@ -15,8 +15,9 @@ The main intentions of this are the following:
 - Issues
 
 ## Tech Specific
-- [Ruby and Rails](tech/ruby-and-rails.md)
-- [Rspec and testing](tech/rspec.md)
+- [Ruby](tech/ruby.md)
+  - [Rails](tech/ruby/rails.md)
+  - [Rspec and testing](tech/ruby/rspec.md)
 - Javascript
 - React & React Native
 - iOS
