@@ -1,23 +1,9 @@
 # Booky JavaScript Style Guide
 - **2 space** indention
 - Follows
- [Airbnb's Style Guide](https://github.com/airbnb/javascript/tree/es5-deprecated/es5)
-- Use single quotes `''` for strings.
-- When writing **comments**, observe **proper spacing** after **forward slash** `/`
-    ```
-    //this is a bad comment
-    // This is a good comment
-
-
-    /*this is a bad comment*/
-
-    /* 
-      This is a good comment
-    */
-    ```
+ [Airbnb's Style Guide](https://github.com/airbnb/javascript/tree/es5-deprecated/es5) with the following exceptions below
 
 ## Variables 
-- Use camelCase
 - Always end with **semicolon** `;` when declaring/initialising variables
     ```
     // declaration
@@ -200,6 +186,7 @@ The following are best practices we have found valuable while developing **React
 > "Talk only to your immediate friends."
 - Keep your functions **pure**. Avoid inserting **side-effects** in your code
 - Think of a **side-effect** as something that [does two things at once](https://stackoverflow.com/questions/8129105/javascript-closures-and-side-effects-in-plain-english-separately).
+- Be wary of input and output that goes through each function.
 - We don’t want our functions to know about the entire object map of the system. [Individual functions should have a limited amount of knowledge](https://hackernoon.com/object-oriented-tricks-2-law-of-demeter-4ecc9becad85).
   
   ```
