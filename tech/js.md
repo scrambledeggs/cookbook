@@ -126,6 +126,7 @@ const fib = fibParser(abc);
 
 - [Lodash](https://lodash.com/docs/4.17.11)
     - Use `_.isNil()` when checking for `undefined` and `null` values. See docs for [4.0](https://lodash.com/docs/4.17.11#isNil)
+    - Be mindful when using `_.isNil()` with `arrays` as it will still return `false` if array is empty. Use `_.isEmpty()` instead.
     - Don't use `_.isUndefined()` and `_.isNull()` anymore for cleaner conditional statements
 
     ```
