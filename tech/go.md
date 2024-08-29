@@ -16,7 +16,7 @@
 - Indentation: Use **tabs** for indentation.
 - Comments: Use `//` for single-line comments and `/* ... */` for block comments. Add comments to describe the purpose of the package, exported functions, and any complex logic.
 
-## File structure 
+## File structure
 
 Typical **[SAM](https://aws.amazon.com/serverless/sam/)** projects
 ```
@@ -76,8 +76,8 @@ Typical **[SAM](https://aws.amazon.com/serverless/sam/)** projects
 
 ## Logging
 
-- **Library**: Use our [common](https://github.com/scrambledeggs/booky-go-common) logger 
-- **Levels**: Use appropriate log levels (INFO, WARN, ERROR).
+- **Library**: Use our [common](https://github.com/scrambledeggs/booky-go-common) logs
+- **Levels**: Use appropriate log levels (DEBUG, INFO, TRACE, WARN, ERROR, FATAL).
 
 ## Stylistic
 
@@ -100,19 +100,19 @@ Typical **[SAM](https://aws.amazon.com/serverless/sam/)** projects
   	foo := 1
   	bar := 2
   	buzz := 3
-  
+
   	if i + buzz != 100 {
   		return false
   	}
 
   	result := foo + bar
-  
+
   	return result == 3
   }
 
   func goodCompute(i int) bool {
   	buzz := 3
-  
+
   	if i + buzz != 100 {
   		return false
   	}
@@ -120,7 +120,7 @@ Typical **[SAM](https://aws.amazon.com/serverless/sam/)** projects
   	foo := 1
   	bar := 2
   	result := foo + bar
-  
+
   	return result == 3
   }
   ```
