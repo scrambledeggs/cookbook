@@ -54,8 +54,9 @@ flowchart
     merge --> deploytest[deploy to testing environment]
     deploytest --> testendorse[endorse to QA]
     testendorse ---> qaapp{QA Result}
-    qaapp -- FAILED --> fixeta[determine fix time]
-    fixeta --> cm[commit time]
+    qaapp -- FAILED --> fixeta[estimate fix time]
+    fixeta --> cm[report estimated fix time to QA]
+    cm ---> commit
   end
   subgraph Deployment Phase
     qaapp -- APPROVED --> crelease[create release branch]
@@ -108,13 +109,22 @@ flowchart
 
 ### Pre-release
 
-- Create PR for version change
+- Adjust version files in repository
 
 Node: in `package.json` - `version` field
 
 Go: in `template.yml` - `Metadata.SemanticVersion` field
 
 Rails: `.version` file
+
+- Commit and push changes
+- Create PR for version change
+
+
+#### Version Naming
+Use semantic versioning system: https://semver.org/
+
+
 
 ### Deployment Phase
 
