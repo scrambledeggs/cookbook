@@ -41,31 +41,47 @@ gitGraph TB:
 
 ```mermaid
 flowchart
-  cbranch[create branch from develop] ---> commit[commit changes]
-  commit ---> push
-  push ---> initialpr[PR to develop]
-  initialpr ---> devapp{Approved}
-  devapp -- Yes --> merge[merge delete branch]
-  merge --> deploytest[deploy to testing environment]
-  deploytest --> testendorse[endorse to QA]
-  testendorse ---> qaapp{Approved}
-  qaapp -- No --> cbranch
-  qaapp -- Yes --> crelease[create release branch]
-  crelease --> vchange[apply version file changes]
-  vchange --> mainpr[PR to main]
-  mainpr --> mainapp{approved}
-  mainapp -- Yes --> rel[create release]
-  mainapp -- No --> cbranch
-  rel --> prod[deploy tag to production]
-  prod --> PPT
-  PPT --> pptbugs{has bugs?}
-  pptbugs -- YES --> sev[determine bug severity]
-  sev --> strat[bugfix strat + timeline]
-  strat --> dec{ hotfix or rollback?  }
+  subgraph Development Phase
+    start([development start]) --> cbranch
+    cbranch[create branch from develop] ---> commit[commit changes]
+    commit ---> push[push changes]
+    push ---> initialpr[PR to develop]
+    initialpr ---> devapp{PR Approved?}
+    devapp -- Yes --> merge[merge + delete branch]
+    devapp -- No --> commit
+  end
+  subgraph Testing Phase
+    merge --> deploytest[deploy to testing environment]
+    deploytest --> testendorse[endorse to QA]
+    testendorse ---> qaapp{QA Result}
+    qaapp -- FAILED --> fixeta[determine fix time]
+    fixeta --> cm[commit time]
+  end
+  subgraph Deployment Phase
+    qaapp -- APPROVED --> crelease[create release branch]
+    crelease --> vchange[apply version file changes]
+    vchange --> initialpr
+    vchange --> mainpr[PR to main]
+    mainpr --> mainapp{PR approved?}
+    mainapp -- Yes --> rel[create release]
+    mainapp -- No --> cbranch
+    rel --> prod[deploy tag to production]
+  end
+  subgraph Post Deployment Phase
+    prod --> PPT
+    PPT --> pptbugs{has bugs?}
+    pptbugs -- YES --> sev[determine 
+      + bug severity
+      +       bugfix strat 
+      + timeline
+    ]
+
+    sev --> dec{ hotfix or rollback?  }
+    dec -- hotfix --> hf[create hotfix branch]
+    hf --> mainpr
+    dec -- rollback --> rb[rollback strategy + deploy prev version]
+  end
   pptbugs -- NO --> complete([have fun 🥳])
-  dec -- hotfix --> hf[create hotfix branch]
-  hf --> mainpr
-  dec -- rollback --> rb[rollback strategy + deploy prev version]
   
 
 ```
@@ -81,7 +97,7 @@ flowchart
 ### Testing Phase
 - Make sure your branch is merged to `develop`
 - Deploy `develop` to [testing environment]
-- Endorse to QA with 6 character commit hash
+- Endorse to QA with 7 characters commit hash
 - Wait for QA results
 
 ### Bug fixing in Testing Phase
@@ -94,9 +110,11 @@ flowchart
 
 - Create PR for version change
 
-Node: in package.json - `version` field
-Go: in template.yml - `Metadata.SemanticVersion` field
-Rails: .version file
+Node: in `package.json` - `version` field
+
+Go: in `template.yml` - `Metadata.SemanticVersion` field
+
+Rails: `.version` file
 
 ### Deployment Phase
 
