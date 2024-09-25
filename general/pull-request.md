@@ -101,14 +101,13 @@ flowchart
 - Endorse to QA with 7 characters commit hash
 - Wait for QA results
 
-### Bug fixing in Testing Phase
+#### Bug fixing in Testing Phase
 
 - Estimate time needed to address bugs
 - Report estimated time to QA
 - Go back to Development Phase step
 
-### Pre-release
-
+### Deployment Phase
 - Adjust version files in repository
 
 Node: in `package.json` - `version` field
@@ -118,56 +117,17 @@ Go: in `template.yml` - `Metadata.SemanticVersion` field
 Rails: `.version` file
 
 - Commit and push changes
-- Create PR for version change
-
-
-#### Version Naming
-Use semantic versioning system: https://semver.org/
-
-
-
-### Deployment Phase
-
+- Create PRs for version change to both `main` and `develop` branches
+- Wait for `main` PR approval
 - create a release (in github)
-- create tag
-- always deploy tag created
+- create tag (Note: don't put `v` prefix)
+- Deploy tag created to production
 
+### Post-deployment phase
 
-## Branch Naming Guide
+## PR Time Period
 
-- All characters should be lowercase
-- use `kebab-case` naming
-- descriptive name but not too long
-- Max characters: 15 (not counting prefix)
-
-
-
-Use the following prefixes for branch names:
-
-### `feat/`
-
-for code that provide new features for the application
-
-examples:  
-- New endpoints
-- New web pages/app screens
-- New sections in the app frontend
-
-### `fix/`
-
-### `chore/`
-
-### `feat/`
-
-### `release/`
-
-### `hotfix/`
-
-### `test/`
-
-For branches that you want to test but not necessarily want to merge it (maybe for poc)
-
-
+- PRs should be resolved before the estimated Time commitment in ticket (ideally: the day before QA testing phase)
 
 ## Code Reviewers
 
@@ -193,11 +153,80 @@ Liability of Vertical Lead + Sub lead/s if branch merged to `develop` caused err
 Note:
 Liability of Vertical Lead + Sub lead/s + Approvers if `main` branch is broken
 
-### PR Time Period
 
-- PRs should be resolved before the estimated Time commitment in ticket (ideally: the day before QA testing phase)
 
-## PR Description
+## Branch Naming Guide
+
+- name pattern `prefix/context`
+- All characters should be lowercase
+- use `kebab-case` naming
+- descriptive name but not too long
+- **Max characters:** `15` (not counting prefix)
+
+
+
+Use the following prefixes for branch names:
+
+### `feat/`
+
+for code changes that provide new features for the application
+
+PR this branch to `develop` branch
+
+examples:  
+- New endpoints
+- New web pages/app screens
+- New sections in the app frontend
+
+
+### `fix/`
+
+for code changes that provides fixes for bugs found in the application
+
+PR this branch to `develop` branch
+
+
+### `chore/`
+
+for maintenance code in app
+
+PR this branch to `develop` branch
+
+
+examples:
+- updated dependencies
+- copy changes
+- asset changes
+- code refactors
+- deleting unused code/files
+
+### `release/`
+
+Merge `develop` branch changes to production
+
+branch name will be the version of the release ex: `release/1.2.3`
+
+PR this branch to `main` and `develop` branches
+
+
+### `hotfix/`
+
+- This must be checked out from `main` branch
+
+- branch name will be the version of the release ex: `hotfix/1.2.3`
+
+PR this branch to `main` and `develop` branches
+
+### `test/`
+
+For code changes that you want to test but not necessarily want to merge it (maybe for poc)
+
+Rename to proper branch if you want to merge
+
+
+
+
+## PR Description Outline
 
 - change description
 - breaking changes
@@ -208,6 +237,13 @@ Liability of Vertical Lead + Sub lead/s + Approvers if `main` branch is broken
 - environment variables list/description updates
 - links to previous related and merged PRs
 - related tickets
+
+
+
+## Version Naming
+Use semantic versioning system: https://semver.org/
+
+Note: do not add `v` prefix in your versions!
 
 ## Notes
 
