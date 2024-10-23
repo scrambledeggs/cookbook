@@ -219,7 +219,7 @@ Note: Use booky-docs bucket for any documentation to be uploaded
 
 ## Step 2: GitHub Workflow YAML File
 
-Create a new workflow file `.github/workflows/upload-docs.yml` in your repository:
+In the workflow file `.github/workflows/deploy-staging.yml` or similar in your repository:
 
 ```yaml
 # ... code before DEPLOY steps NOTE: please check github workflows for reference
