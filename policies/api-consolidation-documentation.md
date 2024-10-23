@@ -227,19 +227,26 @@ DEPLOY:
     steps:
       # ... remaining code after deployment steps - name: Deploy
 
-      - name: Install AWS CLI
-        run: |
-          sudo apt-get update
-          sudo apt-get install awscli -y
-
       - name: Upload API Documentation to S3
-        env:
-          aws_access_key_id: ${{ secrets.NON_PROD_AWS_ACCESS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.NON_PROD_AWS_SECRET_ACCESS_KEY }}
-          aws_region: ${{ secrets.REGION }}
-        run: |
-          aws s3 sync docs/ s3://${{ env.APP_API_DOCS_S3 }}/ --acl public-read
+        uses: keithweaver/aws-s3-github-action@v1.0.0
+        with:
+          command: cp
+          destination: 's3://booky-docs/${{ env.APP_NAME }}.yml'
+          source: ./docs/api_contract.yml
 ```
+
+### 2. Booky Rosetta Manual Deployment:
+- If a manual redeployment is required, follow these steps:
+  1. Log in to the AWS Amplify console.
+  2. Navigate to the **booky-Rosetta** project.
+  3. In the "All apps" section, select **booky-Rosetta**.
+  4. Click the **Redeploy** button in the "Deployments" tab. This will trigger a new deployment based on the current `main` branch state.
+
+### to reflect documentation on frontend NOTE: currently exploring ways to automatically reflect documentation without redeploying
+
+## Accessing the documentation
+
+go to https://api-docs.bky.ph/ to access the consolidated API documentation
 
 ## Note
 
