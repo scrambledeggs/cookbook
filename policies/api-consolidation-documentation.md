@@ -235,14 +235,12 @@ DEPLOY:
           source: ./docs/api_contract.yml
 ```
 
-### 2. Booky Rosetta Manual Deployment:
+## Booky Rosetta Manual Deployment:
 - If a manual redeployment is required, follow these steps:
   1. Log in to the AWS Amplify console.
   2. Navigate to the **booky-Rosetta** project.
   3. In the "All apps" section, select **booky-Rosetta**.
   4. Click the **Redeploy** button in the "Deployments" tab. This will trigger a new deployment based on the current `main` branch state.
-
-### to reflect documentation on frontend NOTE: currently exploring ways to automatically reflect documentation without redeploying
 
 ## Accessing the documentation
 
@@ -250,4 +248,5 @@ go to https://api-docs.bky.ph/ to access the consolidated API documentation
 
 ## Note
 
-Documentation Review: Before the workflow is triggered, ensure documentation is reviewed and validated.
+- Documentation Review: Before the workflow is triggered, ensure documentation is reviewed and validated.
+- To reflect documentation on frontend NOTE: currently exploring ways to automatically reflect documentation without redeploying
