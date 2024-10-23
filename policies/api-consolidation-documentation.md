@@ -197,7 +197,7 @@ components:
 
 ### 5. Hosting and Access
 
-- API documentation must be accessible to authorized users and hosted in a secure environment (e.g., **AWS S3**).
+- API documentation must be accessible to authorized users and hosted in a secure environment (e.g., **booky-docs**) bucket.
 - Permissions must be set on the S3 bucket to ensure that only authorized personnel have write access, while read access is available to relevant users and services.
 
 ---
@@ -222,22 +222,10 @@ Note: Use booky-docs bucket for any documentation to be uploaded
 Create a new workflow file `.github/workflows/upload-docs.yml` in your repository:
 
 ```yaml
-name: Upload API Documentation to S3
-
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - "docs/**" # Folder where the API documentation is stored
-
-jobs:
-  upload-docs:
-    runs-on: ubuntu-latest
-
+# ... code before DEPLOY steps NOTE: please check github workflows for reference
+DEPLOY:
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      # ... remaining code after deployment steps - name: Deploy
 
       - name: Install AWS CLI
         run: |
@@ -246,11 +234,11 @@ jobs:
 
       - name: Upload API Documentation to S3
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
+          aws_access_key_id: ${{ secrets.NON_PROD_AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.NON_PROD_AWS_SECRET_ACCESS_KEY }}
+          aws_region: ${{ secrets.REGION }}
         run: |
-          aws s3 sync docs/ s3://<your-bucket-name>/api-docs/ --acl public-read
+          aws s3 sync docs/ s3://${{ env.APP_API_DOCS_S3 }}/ --acl public-read
 ```
 
 ## Note
