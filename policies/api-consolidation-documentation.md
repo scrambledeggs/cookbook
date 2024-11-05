@@ -197,7 +197,7 @@ components:
 
 ### 5. Hosting and Access
 
-- API documentation must be accessible to authorized users and hosted in a secure environment (e.g., **booky-docs**) bucket.
+- API documentation must be accessible to authorized users and hosted in a secure environment (e.g., **open-api-contracts**) bucket.
 - Permissions must be set on the S3 bucket to ensure that only authorized personnel have write access, while read access is available to relevant users and services.
 
 ---
@@ -215,7 +215,7 @@ To automate the process of uploading API documentation to an S3 bucket, we can u
   - `AWS_SECRET_ACCESS_KEY`
   - `AWS_REGION` (optional, if using multiple regions)
 
-Note: Use booky-docs bucket for any documentation to be uploaded
+Note: Use open-api-contracts bucket for any documentation to be uploaded
 
 ## Step 2: GitHub Workflow YAML File
 
@@ -231,7 +231,7 @@ DEPLOY:
         uses: keithweaver/aws-s3-github-action@v1.0.0
         with:
           command: cp
-          destination: 's3://booky-docs/${{ env.APP_NAME }}.yml'
+          destination: 's3://open-api-contracts/${{ env.APP_NAME }}.yml'
           source: ./docs/api_contract.yml
 ```
 
