@@ -1,10 +1,10 @@
 # AWS CloudWatch Alarm Setup Policy for Booky Services
 
 ### Purpose
-This policy outlines the steps for configuring AWS CloudWatch Alarms to monitor booky services, specifically focusing on AWS Lambda functions and AWS X-Ray for distributed tracing. The goal is to ensure that performance, availability, and error conditions are effectively tracked, and appropriate alerts are triggered when issues arise.
+This policy outlines the steps for configuring AWS CloudWatch Alarms to monitor Booky services, specifically focusing on AWS Lambda functions and AWS X-Ray for distributed tracing. The goal is to ensure that performance, availability, and error conditions are effectively tracked, and appropriate alerts are triggered when issues arise.
 
 ### Scope
-This applies to all developers, DevOps engineers, and technical personnel responsible for managing and monitoring the booky services deployed on AWS Lambda.
+This applies to all developers, DevOps engineers, and technical personnel responsible for managing and monitoring the Booky services deployed on AWS Lambda.
 
 ---
 
@@ -12,18 +12,15 @@ This applies to all developers, DevOps engineers, and technical personnel respon
 
 We’ll monitor key Lambda and X-Ray metrics to ensure everything is running smoothly:
 
-1. **Lambda Function Error Rate**
-   If Lambda functions fail, we need to be alerted.
+1. **Lambda Function Error Rate**: If Lambda functions fail, we need to be alerted.
    - **Metric**: `AWS/Lambda - Errors`
    - **Threshold**: Trigger an alarm if the error rate exceeds **1%** for 5 minutes.
 
-2. **X-Ray Faults**
-   Monitor X-Ray for fault rates to catch errors in distributed services.
+2. **X-Ray Faults**: Monitor X-Ray for fault rates to catch errors in distributed services.
    - **Metric**: `AWS/XRay - FaultCount`
    - **Threshold**: Trigger an alarm if **more than 30% fault rate** are detected.
 
-3. **Invocations**
-   Keep an eye on the number of Lambda invocations to monitor service activity.
+3. **Invocations**: Keep an eye on the number of Lambda invocations to monitor service activity.
    - **Metric**: `AWS/Lambda - Invocations`
    - **Threshold**: Set a threshold based on the expected normal volume of invocations.
 
@@ -41,7 +38,7 @@ For each metric, configure alarms with the following settings:
 ### Notification Channels
 Set up notification channels to ensure alerts reach the right people:
 
-1. **Slack**: Use Slack **cloudwatch-alarm-notification** channel for critical alerts, such as when Lambda functions fail or X-Ray faults spike.
+1. **Slack**: Use Slack **prod-sqs-lambda-alerts** channel for critical alerts, such as when Lambda functions fail or X-Ray faults spike.
 
 ---
 
@@ -76,4 +73,4 @@ We categorize alarms by their severity to prioritize responses:
 
 ---
 
-This policy ensures that booky services using AWS Lambda and X-Ray are continuously monitored, allowing us to address issues before they affect the user experience.
+This policy ensures that Booky services using AWS Lambda and X-Ray are continuously monitored, allowing us to address issues before they affect the user experience.
