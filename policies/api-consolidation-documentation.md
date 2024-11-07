@@ -238,13 +238,13 @@ DEPLOY:
 ## Booky Rosetta Manual Deployment:
 - If a manual redeployment is required, follow these steps:
   1. Log in to the AWS Amplify console.
-  2. Navigate to the **booky-Rosetta** project.
-  3. In the "All apps" section, select **booky-Rosetta**.
+  2. Navigate to the **booky-rosetta** project.
+  3. In the "All apps" section, select **booky-rosetta**.
   4. Click the **Redeploy** button in the "Deployments" tab. This will trigger a new deployment based on the current `main` branch state.
 
 ## Accessing the documentation
 
-go to https://api-docs.bky.ph/ to access the consolidated API documentation
+Go to https://api-docs.bky.ph/ to access the consolidated API documentation
 
 ## Note
 
