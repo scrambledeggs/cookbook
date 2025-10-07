@@ -45,54 +45,67 @@ this is a special `fix/` branch that needs immediate deployment on production du
 - use `-` as spaces
 - add a prefix on the type of your branch (chore/fix/feat/hotfix)
 
-## Branching Strategies
-
-### Working on a Feature as a Sole Resource
-
-create a branch from `main`
-```mermaid
-gitGraph
-  commit tag: "1.0.0"
-  commit tag: "1.0.1"
-  commit tag: "1.1.0"
-  branch feat/some-feature-name
-  commit
-  commit
-  commit
-```
-
-### Working on a Feature as a Team
-
-1 - Create a branch from `main`
+## Branching and Pull Request Process
 
 ```mermaid
-gitGraph
-  commit tag: "1.0.0"
-  commit tag: "1.0.1"
-  commit tag: "1.1.0"
-  branch feat/some-feature-name
+---
+config:
+  layout: dagre
+---
+flowchart TD
+    start(["start"]) --> checkout["Branch out from main"]
+    checkout --> develop["develop/code feature"]
+    develop --> prmain["PR to main"]
+    prmain --> approved{"approved? 3 reviewers - any"}
+    approved -- NO --> develop
+    approved -- YES --> mergemain["merge to main"]
+    mergemain --> n1["deploy main branch to staging + endorse to QA"]
+    n1 --> n2["passed?"]
+    n2 -- NO --> checkout
+    n2 -- YES --> n3["backend/frontend?"]
+    n3 -- BACKEND/FRONTEND(web, microsite,etc) --> n31["QA sign off"]
+    n4["create release/x.xx.xx from main"] --> n5["PR (3 reviewers including 1 TL)<br>+ merge"]
+    n5 --> n6["create TAG x.xx.xx from release/x.xx.xx"]
+    n6 --> n7["deploy TAG x.xx.xx to prod"]
+    n7 --> n8["PPT"]
+    n8 -- FAIL --> n9["hotfix or rollback?"]
+    n8 -- SUCCESS --> n11(["done"])
+    n9 -- hotfix --> n10["create hotfix/x.xx.xx from TAG x.xx.xx"]
+    n10 --> n12["PR (3 reviewers including 1 TL)<br>merge"]
+    n12 --> n13["create TAG x.xx.x from hotfix/x.xx.xx"]
+    n13 --> n7
+    n3 -- FRONTEND (APP/MP) --> n14["create release/x.xx.xx-rc-(n+1) from main<br>ex: release/6.5.2-rc-1"]
+    n14 --> n18@{ label: "PR (any 3 reviewers )<br style=\"--tw-scale-x:\">merge" }
+    n15["create TAG x.xx.xx-rc-(n+1) from release/x.xx.xx-rc-(n+1)"] --> n16["build pre-prod<br>endorse TAG to QA"]
+    n16 --> n17["PPT"]
+    n18 --> n15
+    n17 -- FAIL --> n14
+    n17 -- SUCCESS --> n19["QA signoff"]
+    n19 --> n20["create release/x.xx.x from tag/x.xx.xx-rc-(n+1)"]
+    n20 --> n21@{ label: "PR (3 reviewers including 1 TL)<br style=\"--tw-scale-x:\">merge" }
+    n21 --> n22["create tag/x.xx.x"]
+    n22 --> n23["deploy to prod/app store/play store"]
+    n23 --> n24["hotfix?"]
+    n24 -- YES --> n25["create hotfix/x.xx.xx from TAG x.xx.xx"]
+    n24 -- NO --> n28(["done"])
+    n25 --> n26["PR (3 reviewers including 1 TL)<br>+ merge"]
+    n26 --> n27["create TAG x.xx.x from hotfix/x.xx.x"]
+    n27 --> n23
+    n9 -- rollback --> n29["deploy previous tag"]
+    n31 --> n4
+    n2@{ shape: diam}
+    n3@{ shape: diam}
+    n8@{ shape: diam}
+    n9@{ shape: diam}
+    n18@{ shape: rect}
+    n17@{ shape: diam}
+    n21@{ shape: rect}
+    n24@{ shape: diam}
+    n26@{ shape: rect}
+
 ```
 
-2 - Create a branch from the previously created feature as how many members you are 
 
-```mermaid
-gitGraph
-  commit tag: "1.0.0"
-  commit tag: "1.0.1"
-  commit tag: "1.1.0"
-  branch feat/some-feature-name
-  branch feat/member-1
-  branch chore/member-2
-  branch fix/member-3
-  commit
-  commit
-  checkout chore/member-2
-  commit
-  commit
-  commit
-  checkout feat/member-1
-  commit
-```
 
 ## Commits and Pull Requests
 - Commit often. Small commits are acceptable. General guideline is to commit when tests are passing.
